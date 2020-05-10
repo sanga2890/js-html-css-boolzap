@@ -1,3 +1,5 @@
-$('.contact-chat-left p:first-child').append("Tizio")
+$('.contact-chat-left p.contact-name').append('Tizio')
 
-$('.contact-chat-left p:last-child').append('blblablbllbalallaballabla')
+$('.contact-chat-left p.last-message').append('blblablbllbalallaballabla')
+
+$('.contact-chat-right p.time').append('Never')
