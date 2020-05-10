@@ -5,12 +5,14 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* dimensioni schermata */
 #viewport {
     width: 100vw;
     height: 100vh;
     background-color: #d6dbd7;
 }
 
+/* strisci verde di sfondo */
 #stripe {
     width: 100vw;
     height: 136px;
@@ -18,25 +20,27 @@
     padding-top: 20px;
 }
 
+/* tutto il contenuto principale */
 #main-content {
     max-width: 1400px;
     height: calc(100vh - 40px);
     margin: auto;
-
 }
 
+/* sezione di sininstra con lista chat aperte  */
 #contact-list {
     float: left;
     width: 30%;
     height: 100%;
 }
 
+/* sezione di destra con conversazione corrente */
 #chat {
     width: calc(100% - 30%);
     height: 100%;
     background: url(img/wallpaper.png);
     background-size: cover;
-    border-left: 1px solid #9a9a9a;
+    border-left: 1px solid #e7e7e7;
     float: left;
 }
 
@@ -58,6 +62,7 @@
     object-fit: cover;
 }
 
+/* icona dello status */
 .status {
     border-radius: 50%;
     border: 2px solid #919191;
@@ -69,6 +74,7 @@
     cursor: pointer;
 }
 
+/* div per coprire parte del cerchio dell'icona dello status */
 .cover1 {
     width: 10px;
     height: 5px;
@@ -176,9 +182,15 @@
     margin-right: 15px;
 }
 
+.header-chat-left p.ultimo-accesso {
+    font-size: 12px;
+    color: #4a4a4a;
+}
+
 .header-chat-left {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .header-chat-right {
@@ -190,12 +202,14 @@
     margin-right: 30px;
     color: #919191;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .header-chat-right .material-icons {
     margin-right: 30px;
     color: #919191;
     font-size: 26px;
+    cursor: pointer;
 }
 
 .write-message {
@@ -232,31 +246,60 @@
     outline: none;
 }
 
+/* overflow per evitare che il contenuto esca dal contenitore principale */
 .bottom-aside {
     overflow-y: auto;
     height: calc(100% - 116px);
 }
 
+/* stile di ogni riga chat aperta */
 .contact-chat {
     width: 100%;
     height: 71px;
     background-color: #fff;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ededed;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    cursor: pointer;
 }
 
 .contact-chat-left {
     display: flex;
+    align-items: center;
 }
 
+.contact-chat-left p.last-message {
+    font-size: 13px;
+    padding-top: 4px;
+    color: #919191;
+}
+
+.contact-chat-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-chat-right p.time {
+    color: #919191;
+    font-size: 13px;
+}
+
+.contact-chat-right p.arrow {
+    text-align: right;
+    padding-top: 5px;
+    color: #919191;
+}
+
+/* nascondo la freccetta senza che il suo spazio venga tolto */
 .contact-chat-right p.arrow i.fas.fa-chevron-down{
-    display: none;
+    visibility: hidden;
 }
 
+/* la freccetta dovrà riapparire se il mouse si trova sulla riga del contatto */
 .contact-chat:hover .contact-chat-right p.arrow i.fas.fa-chevron-down{
-    display: block;
+    visibility: visible;
 }
 
 .contact-chat:hover {
@@ -267,15 +310,17 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff;
     padding: 5px;
     margin-right: 10px;
+    object-fit: cover;
 }
 
+/* overflow sulla sezione della conversazione per fare in modo che non esca dal suo contenitore principale. Appariranno quindi le barre di scorrimente sui lati  */
 .conversation {
     overflow-y: auto;
     height: calc(100% - 125px);
-    padding: 15px 50px;
+    padding: 15px 80px;
+    font-size: 14px;
 }
 
 .conversation .your-message {
@@ -286,6 +331,8 @@
     padding: 8px;
     border-radius: 10px;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .conversation .my-message {
@@ -297,8 +344,36 @@
     border-radius: 10px;
     background-color: #dcf8c6;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
+.message {
+    padding-right: 20px;
+}
+
+.time-arrow {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-width: 30px;
+}
+
+.time-arrow p.arrow{
+    text-align: right;
+    display: none;
+}
+
+/* in hover la freccetta compare mentre l'orario sparisce */
+.your-message:hover .time-arrow p.arrow, .my-message:hover .time-arrow p.arrow {
+    display: block;
+}
+
+.your-message:hover .time-arrow p.time , .my-message:hover .time-arrow p.time {
+    display: none;
+}
+
+/* triangolino in parte alle nuvolette della chat */
 .conversation .your-message::before {
     content: '';
     width: 0;
