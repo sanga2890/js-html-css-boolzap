@@ -220,11 +220,11 @@
                             </div>
                         </div>
                         <!-- sezione centrale con le nuvolette dei messaggi scambiati -->
-                        <div class="conversation">
+                        <div id="conversation">
                             <!-- your-message indica i messaggi ricevuti dall'interlocutore, ovvero tutti i messaggi della parte sinistra della chat -->
                             <div class="your-message">
                                 <div class="message">
-                                    <p>Sai come chiamano 1/4 di libbra con formaggio a Parigi?</p>
+                                    <p class="mex">Sai come chiamano 1/4 di libbra con formaggio a Parigi?</p>
                                 </div>
                                 <div class="time-arrow">
                                     <p class="time">0.00</p>
@@ -234,7 +234,7 @@
                             <!-- my-message sta invece ad indicare i messaggi inviati dall'utente, ovvero tutti i messaggi della parte destra della chat e con sfono verdino -->
                             <div class="my-message">
                                 <div class="message">
-                                    <p>Non 1/4 di libbra con formaggio?</p>
+                                    <p class="mex">Non 1/4 di libbra con formaggio?</p>
                                 </div>
                                 <div class="time-arrow">
                                     <p class="time">0.00</p>
@@ -243,7 +243,7 @@
                             </div>
                             <div class="your-message">
                                 <div class="message">
-                                    <p>Hanno il sistema metrico decimale, non sanno che *azzo sia 1/4 di libbra</p>
+                                    <p class="mex">Hanno il sistema metrico decimale, non sanno che *azzo sia 1/4 di libbra</p>
                                 </div>
                                 <div class="time-arrow">
                                     <p class="time">0.00</p>
@@ -252,7 +252,7 @@
                             </div>
                             <div class="my-message">
                                 <div class="message">
-                                    <p>E come lo chiamano?</p>
+                                    <p class="mex">E come lo chiamano?</p>
                                 </div>
                                 <div class="time-arrow">
                                     <p class="time">0.00</p>
@@ -261,19 +261,32 @@
                             </div>
                             <div class="your-message">
                                 <div class="message">
-                                    <p>Lo chiamano "Royale con formaggio"</p>
+                                    <p class="mex">Lo chiamano "Royale con formaggio"</p>
                                 </div>
                                 <div class="time-arrow">
                                     <p class="time">0.00</p>
                                     <p class="arrow"><i class="fas fa-chevron-down"></i></p>
                                 </div>
                             </div>
+
+                            </div>
+                            <div class="template">
+                                <div class="my-message">
+                                    <div class="message">
+                                        <p class="mex"></p>
+                                    </div>
+                                    <div class="time-arrow">
+                                        <p class="time"></p>
+                                        <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    </div>
+                                </div>
                             </div>
                             <!-- input di scrittura dove inserire il messaggio che si vuole inviare -->
                         <div class="write-message">
                             <i class="far fa-laugh"></i>
-                            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
-                            <span class="material-icons">mic</span>
+                            <input class="input" type="text"  id="input-utente" placeholder="Scrivi un messaggio">
+                            <span class="material-icons mic">mic</span>
+                            <span class="material-icons send template">send</span>
                         </div>
                     </div>
                 </main>
