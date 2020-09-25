@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/logo.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="https://kit.fontawesome.com/29d802f49a.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
@@ -46,8 +48,9 @@
                             <div class="header-aside-bottom">
                                 <!-- barra di ricerca dei contatti -->
                                 <div class="search">
-                                    <span class="material-icons">search</span>
-                                    <input type="search" placeholder="Cerca o inizia una nuova chat">
+                                    <span class="material-icons cerca">search</span>
+                                    <span class="material-icons hide arrow-down">arrow_downward</span>
+                                    <input id="input-search" placeholder="Cerca o inizia una nuova chat">
                                 </div>
                             </div>
                         </div>
@@ -55,9 +58,9 @@
                         <div class="bottom-aside">
                         <div class="chat-list">
                             <!-- singola riga contenente i vari elementi: foto profilo, nome, ultimo messaggio, orario -->
-                            <div class="contact-chat">
+                            <div class="contact-chat active">
                                 <div class="contact-chat-left">
-                                    <img src="img/vega.jpg" alt="foto profilo Vncent Vega">
+                                    <img src="img/vega.jpg" alt="foto profilo Vincent Vega">
                                     <div class="name-text">
                                         <p class="contact-name">Vincent Vega</p>
                                         <p class="last-message"></p>
@@ -203,8 +206,8 @@
                     </aside>
                     <!-- inzio sezione di destra contenente la conversazione corrente -->
                     <div id="chat">
-                        <div class="header-chat">
-                            <div class="header-chat-left">
+                        <div class="header-chat hide">
+                            <div class="header-chat-left visible" data-header-chat="Vincent Vega">
                                 <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
                                 <img src="img/vega.jpg" alt="foto profilo interlocutore">
                                 <div class="current-contact-status">
@@ -212,6 +215,88 @@
                                     <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
                                 </div>
                             </div>
+                            <!-- creo una lista di header left, uno per ogni utente e metto il display none per nasconderli e richiamarli poi con una funzione jquery -->
+                            <div class="header-chat-left hide" data-header-chat="Mia Wallace">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/mia.jpeg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Mia Wallace</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Ringo">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/ringo.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Ringo</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Butch">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/bruce.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Butch</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Mr. Wolf">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/wolf.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Mr. Wolf</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Marvin">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/marvin.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Marvin</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Cap. K">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/k.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Cap. K</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Yolanda">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/yolanda.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Yolanda</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Fabienne">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/fabienne.jpeg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Fabienne</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Marcellus Wallace">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/marcellus.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Marcellus Wallace</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+                            <div class="header-chat-left hide" data-header-chat="Lance">
+                                <!-- informazioni del profilo con cui stiamo attaulmente comunicando -->
+                                <img src="img/lance.jpg" alt="foto profilo interlocutore">
+                                <div class="current-contact-status">
+                                    <p class="current-contact-name">Lance</p>
+                                    <p class="ultimo-accesso">Ultimo accesso oggi alle fatti i *azzi tua</p>
+                                </div>
+                            </div>
+
                             <!-- parte destra dell'header con le varie icone: ricerca tra la conversazione, allega , altre impostazioni -->
                             <div class="header-chat-right">
                                 <span class="material-icons">search</span>
@@ -220,15 +305,21 @@
                             </div>
                         </div>
                         <!-- sezione centrale con le nuvolette dei messaggi scambiati -->
-                        <div id="conversation">
+                        <div class="conversation hide" data-contact-name="Vincent Vega">
                             <!-- your-message indica i messaggi ricevuti dall'interlocutore, ovvero tutti i messaggi della parte sinistra della chat -->
                             <div class="your-message">
                                 <div class="message">
                                     <p class="mex">Sai come chiamano 1/4 di libbra con formaggio a Parigi?</p>
                                 </div>
                                 <div class="time-arrow">
-                                    <p class="time">0.00</p>
-                                    <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    <p class="time">00.00</p>
+                                    <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                        <!-- dropdown menu con l'opzione per eliminare il messaggio -->
+                                        <div class="dropdown hide">
+                                            <p class="info">Info Messaggio</p>
+                                            <p class="delete">Elimina</p>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
                             <!-- my-message sta invece ad indicare i messaggi inviati dall'utente, ovvero tutti i messaggi della parte destra della chat e con sfono verdino -->
@@ -237,8 +328,14 @@
                                     <p class="mex">Non 1/4 di libbra con formaggio?</p>
                                 </div>
                                 <div class="time-arrow">
-                                    <p class="time">0.00</p>
-                                    <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    <p class="time">00.00</p>
+                                    <span class="material-icons">done_all</span>
+                                    <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                        <div class="dropdown hide">
+                                            <p class="info">Info Messaggio</p>
+                                            <p class="delete">Elimina</p>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
                             <div class="your-message">
@@ -246,8 +343,13 @@
                                     <p class="mex">Hanno il sistema metrico decimale, non sanno che *azzo sia 1/4 di libbra</p>
                                 </div>
                                 <div class="time-arrow">
-                                    <p class="time">0.00</p>
-                                    <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    <p class="time">00.00</p>
+                                    <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                        <div class="dropdown hide">
+                                            <p class="info">Info Messaggio</p>
+                                            <p class="delete">Elimina</p>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
                             <div class="my-message">
@@ -255,8 +357,14 @@
                                     <p class="mex">E come lo chiamano?</p>
                                 </div>
                                 <div class="time-arrow">
-                                    <p class="time">0.00</p>
-                                    <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    <p class="time">00.00</p>
+                                    <span class="material-icons">done_all</span>
+                                    <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                        <div class="dropdown hide">
+                                            <p class="info">Info Messaggio</p>
+                                            <p class="delete">Elimina</p>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
                             <div class="your-message">
@@ -264,29 +372,72 @@
                                     <p class="mex">Lo chiamano "Royale con formaggio"</p>
                                 </div>
                                 <div class="time-arrow">
-                                    <p class="time">0.00</p>
-                                    <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                    <p class="time">00.00</p>
+                                    <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                        <div class="dropdown hide">
+                                            <p class="info">Info Messaggio</p>
+                                            <p class="delete">Elimina</p>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
 
-                            </div>
-                            <div class="template">
+                        <!-- creo i vari contenitore delle diverse conversazioni e aggiungo l'attributo data per abbinarle poi con jquery al loro contatto di riferimento -->
+                        <div class="conversation hide" data-contact-name="Mia Wallace"></div>
+                        <div class="conversation hide" data-contact-name="Ringo"></div>
+                        <div class="conversation hide" data-contact-name="Butch"></div>
+                        <div class="conversation hide" data-contact-name="Mr. Wolf"></div>
+                        <div class="conversation hide" data-contact-name="Marvin"></div>
+                        <div class="conversation hide" data-contact-name="Cap. K"></div>
+                        <div class="conversation hide" data-contact-name="Yolanda"></div>
+                        <div class="conversation hide" data-contact-name="Fabienne"></div>
+                        <div class="conversation hide" data-contact-name="Marcellus Wallace"></div>
+                        <div class="conversation hide" data-contact-name="Lance"></div>
+
+
+                            <!-- creo un template con il display block da utilizzare per l'inserimento di nuovi messaggi -->
+                            <!-- utilizzo la libreria di Handlebars per generare i template -->
+                            <script id="my-template" type="text/x-handlebars-template">
                                 <div class="my-message">
                                     <div class="message">
-                                        <p class="mex"></p>
+                                        <p class="mex">{{text}}</p>
                                     </div>
                                     <div class="time-arrow">
-                                        <p class="time"></p>
-                                        <p class="arrow"><i class="fas fa-chevron-down"></i></p>
+                                        <p class="time">{{time}}</p>
+                                        <span class="material-icons">done_all</span>
+                                        <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                            <div class="dropdown hide">
+                                                <p class="info">Info Messaggio</p>
+                                                <p class="delete">Elimina</p>
+                                            </div>
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
+                            </script>
+                            <!-- stessa cosa per il messaggio di risposta, creo un template da clonare con la funzione clone di jquery e inserire un messaggio di risposta in pagina -->
+                            <script id="your-template" type="text/x-handlebars-template">
+                                <div class="your-message">
+                                    <div class="message">
+                                        <p class="mex">{{text}}</p>
+                                    </div>
+                                    <div class="time-arrow">
+                                        <p class="time">{{time}}</p>
+                                        <p class="arrow"><i class="fas fa-chevron-down"></i>
+                                            <div class="dropdown hide">
+                                                <p class="info">Info Messaggio</p>
+                                                <p class="delete">Elimina</p>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </script>
                             <!-- input di scrittura dove inserire il messaggio che si vuole inviare -->
-                        <div class="write-message">
+                        <div class="write-message hide">
                             <i class="far fa-laugh"></i>
-                            <input class="input" type="text"  id="input-utente" placeholder="Scrivi un messaggio">
+                            <input class="input" id="input-utente" placeholder="Scrivi un messaggio">
                             <span class="material-icons mic">mic</span>
-                            <span class="material-icons send template">send</span>
+                            <span class="material-icons send hide">send</span>
                         </div>
                     </div>
                 </main>
